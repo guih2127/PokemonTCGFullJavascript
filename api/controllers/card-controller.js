@@ -1,7 +1,16 @@
 const Card = require('../models/card-model')
 
 getCards = async (request, response) => {
-    await Card.find({}, (error, cards) => {
+    let {type, weakness} = request.query
+    let query = {}
+
+    if (type != null)
+        query.type = type
+    
+    if (weakness != null)
+        query.weakness = weakness
+    
+    await Card.find(query, (error, cards) => {
         if (error) {
             return response.status(400).json({ success: false, error: error });
         }
