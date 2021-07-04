@@ -4,18 +4,15 @@ getCards = async (request, response) => {
     let {type, weakness} = request.query
     let query = {}
 
-    if (type != null)
+    if (type != null && type != "")
         query.type = type
     
-    if (weakness != null)
+    if (weakness != null && weakness != "")
         query.weakness = weakness
     
     await Card.find(query, (error, cards) => {
         if (error) {
             return response.status(400).json({ success: false, error: error });
-        }
-        if (!cards.length) {
-            return response.status(404).json({ success: false, error: "No cards found." })
         }
         return response.status(200).json({ success: true, data: cards })
     }).catch(error => console.log(error))
