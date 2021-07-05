@@ -1,7 +1,7 @@
 const Card = require('../models/card-model')
 
 getCards = async (request, response) => {
-    let {type, weakness, name} = request.query
+    let {type, weakness, name, cardType} = request.query
     let query = {}
 
     if (type != null && type != "")
@@ -9,6 +9,9 @@ getCards = async (request, response) => {
     
     if (weakness != null && weakness != "")
         query.weakness = weakness
+
+    if (cardType != null && cardType != "")
+        query.cardType = cardType
 
     if (name != null && name != "") {
         var regex = new RegExp(name, "i")

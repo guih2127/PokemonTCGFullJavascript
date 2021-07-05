@@ -8,7 +8,8 @@ export const getAllCards = (filter) => api.get(`/cards`, {
     params: {
         name: filter.name,
         type: filter.type,
-        weakness: filter.weakness
+        weakness: filter.weakness,
+        cardType: filter.cardType
     }
 })
 

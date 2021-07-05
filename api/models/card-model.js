@@ -21,6 +21,7 @@ const Card = new Schema(
     {
         name: { type: String, required: true },
         cardType: { type: String, enum: ['Pokémon', 'Trainer', 'Energy'], required: true },
+        effect: { type: String, required: false },
         type: { 
             type: String, 
             enum: ['Fire', 'Water', 'Dark', 'Grass', 'Psychic', 'Steel', 'Electric', 'Fighting'],
